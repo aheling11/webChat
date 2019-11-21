@@ -14,4 +14,8 @@ public interface UserService {
     public User saveUser(User user);
 
     public User queryUserForLoin(String username, String pwd);
+
+    public Integer preConditionQuery(String myUserid, String friendUsername);
+
+    public User getUesrInfoByUsername(String username);
 }
