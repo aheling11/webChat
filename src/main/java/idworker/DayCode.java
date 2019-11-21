@@ -1,6 +1,7 @@
-package org.n3r.idworker;
+package idworker;
 
-import org.n3r.idworker.strategy.DayPrefixRandomCodeStrategy;
+
+import idworker.strategy.DayPrefixRandomCodeStrategy;
 
 public class DayCode {
     static RandomCodeStrategy strategy;

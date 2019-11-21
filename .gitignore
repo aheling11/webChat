@@ -6,6 +6,10 @@ target/
 
 ### properties###
 .application.protperties
+
+## generatorConfig ##
+generatorConfig.xml
+
 ### STS ###
 .apt_generated
 .classpath
@@ -15,7 +19,7 @@ target/
 .springBeans
 .sts4-cache
 
-### IntelliJ IDEA ###
+### IntelliJ IDEA ###:
 .idea
 *.iws
 *.iml

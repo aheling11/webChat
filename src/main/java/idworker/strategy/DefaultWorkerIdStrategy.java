@@ -1,10 +1,11 @@
-package org.n3r.idworker.strategy;
+package idworker.strategy;
 
-import org.n3r.idworker.WorkerIdStrategy;
-import org.n3r.idworker.utils.HttpReq;
-import org.n3r.idworker.utils.Ip;
-import org.n3r.idworker.utils.Props;
-import org.n3r.idworker.utils.Utils;
+
+import idworker.WorkerIdStrategy;
+import idworker.utils.HttpReq;
+import idworker.utils.Ip;
+import idworker.utils.Props;
+import idworker.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

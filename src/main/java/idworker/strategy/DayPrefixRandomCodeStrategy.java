@@ -1,4 +1,4 @@
-package org.n3r.idworker.strategy;
+package idworker.strategy;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

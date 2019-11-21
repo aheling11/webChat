@@ -1,4 +1,4 @@
-package root.util;
+package com.webchat.utils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

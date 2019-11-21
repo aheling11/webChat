@@ -1,4 +1,4 @@
-package com.webchat.application;
+package com.webchat;
 
 
 import com.webchat.netty.WSServer;

@@ -1,14 +1,12 @@
-package com.webchat.pojo;
+package com.webchat.pojo.vo;
 
-public class User {
+public class UserVO {
     private String id;
     private String username;
-    private String password;
     private String nickname;
     private String face_image;
     private String face_image_big;
     private String qrcode;
-    private String cid;
 
     public String getId() {
         return id;
@@ -24,14 +22,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getNickname() {
@@ -64,13 +54,5 @@ public class User {
 
     public void setQrcode(String qrcode) {
         this.qrcode = qrcode;
-    }
-
-    public String getCid() {
-        return cid;
-    }
-
-    public void setCid(String cid) {
-        this.cid = cid;
     }
 }

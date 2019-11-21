@@ -1,4 +1,4 @@
-package org.n3r.idworker;
+package idworker;
 
 public interface RandomCodeStrategy {
     void init();

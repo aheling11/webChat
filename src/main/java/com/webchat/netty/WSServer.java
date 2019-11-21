@@ -40,16 +40,5 @@ public class WSServer {
         System.err.println("netty server was started");
     }
 
-    @Component
-    public static class NettyBooter implements ApplicationListener<ContextRefreshedEvent> {
 
-        @Override
-        public void onApplicationEvent(ContextRefreshedEvent event) {
-            if (event.getApplicationContext().getParent() == null) {
-                getInstance().start();
-            }
-        }
-
-
-    }
 }

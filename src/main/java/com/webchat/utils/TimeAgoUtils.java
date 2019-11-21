@@ -1,4 +1,4 @@
-package root.util;
+package com.webchat.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

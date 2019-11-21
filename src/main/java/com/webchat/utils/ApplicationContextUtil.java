@@ -1,4 +1,4 @@
-package root.util;
+package com.webchat.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

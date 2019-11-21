@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 
-@ComponentScan(basePackages = {"com.webchat.controller"})
+@ComponentScan(basePackages = {"com", "idworker"})
 public class WebchatApplication {
 
     public static void main(String[] args) {

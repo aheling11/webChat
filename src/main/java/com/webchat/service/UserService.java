@@ -1,4 +1,6 @@
-package service;
+package com.webchat.service;
+
+import com.webchat.pojo.User;
 
 public interface UserService {
 
@@ -8,4 +10,8 @@ public interface UserService {
      * @return
      */
     public boolean queryUsernameIsExist(String username);
+
+    public User saveUser(User user);
+
+    public User queryUserForLoin(String username, String pwd);
 }

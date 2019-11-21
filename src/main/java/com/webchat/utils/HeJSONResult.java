@@ -2,6 +2,7 @@ package com.webchat.utils;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -37,7 +38,7 @@ public class HeJSONResult {
 
     // 响应中的数据
     private Object data;
-    
+    @JsonIgnore
     private String ok;	// 不使用
 
     public static HeJSONResult build(Integer status, String msg, Object data) {

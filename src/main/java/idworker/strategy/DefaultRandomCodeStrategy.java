@@ -1,8 +1,9 @@
-package org.n3r.idworker.strategy;
+package idworker.strategy;
 
-import org.n3r.idworker.Id;
-import org.n3r.idworker.RandomCodeStrategy;
-import org.n3r.idworker.utils.Utils;
+import idworker.Id;
+import idworker.RandomCodeStrategy;
+import idworker.utils.Utils;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

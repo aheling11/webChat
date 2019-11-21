@@ -1,4 +1,4 @@
-package org.n3r.idworker;
+package idworker;
 
 public class InvalidSystemClock extends RuntimeException {
     public InvalidSystemClock(String message) {
