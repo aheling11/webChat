@@ -5,7 +5,9 @@ import java.util.Date;
 public class FriendsRequest {
     private String id;
     private String send_user_id;
-    private String receive_user_id;
+    private String accept_user_id;
+    private Date request_time;
+
 
     public String getId() {
         return id;
@@ -23,12 +25,12 @@ public class FriendsRequest {
         this.send_user_id = send_user_id;
     }
 
-    public String getReceive_user_id() {
-        return receive_user_id;
+    public String getAccept_user_id() {
+        return accept_user_id;
     }
 
-    public void setReceive_user_id(String receive_user_id) {
-        this.receive_user_id = receive_user_id;
+    public void setAccept_user_id(String accept_user_id) {
+        this.accept_user_id = accept_user_id;
     }
 
     public Date getRequest_time() {
@@ -39,6 +41,5 @@ public class FriendsRequest {
         this.request_time = request_time;
     }
 
-    private Date request_time;
 
 }

@@ -1,6 +1,7 @@
 package com.webchat.controller;
 
 
+import com.webchat.enums.OperatorFriendRequestTypeEnum;
 import com.webchat.enums.SearchFriendsStatusEnum;
 import com.webchat.pojo.User;
 import com.webchat.pojo.vo.UserVO;
@@ -85,14 +86,13 @@ public class UserController {
     }
 
     /**
-     * 添加好友请求 TO DO
+     * 发送添加好友请求
      * @param myUserId
      * @param friendUsername
      * @return
      */
     @PostMapping("addFriendRequest")
     public HeJSONResult addFriendRequest(String myUserId, String friendUsername) {
-
         if (StringUtils.isBlank(myUserId) || StringUtils.isBlank(friendUsername)) {
             return HeJSONResult.errorMsg("输入不能为空");
         }
@@ -101,12 +101,73 @@ public class UserController {
         //3. 添加的好友不能是自己
         Integer status = userService.preConditionQuery(myUserId, friendUsername);
         if (status == SearchFriendsStatusEnum.SUCCESS.status) {
-            User user;
-
+            //1. 将该次请求记录进好友请求表
+            userService.sendFriendRequest(myUserId, friendUsername);
         } else {
             String errorMsg = SearchFriendsStatusEnum.getMsgByKey(status);
             return HeJSONResult.errorMsg(errorMsg);
         }
+
+        return HeJSONResult.ok();
+    }
+
+    /**
+     * 查询用户接收到的好友申请
+     * @param userId ：你的用户ID
+     * @return
+     */
+    @PostMapping("queryFriendRequest")
+    public HeJSONResult queryFriendRequest(String userId) {
+        if (StringUtils.isBlank(userId)) {
+            return HeJSONResult.errorMsg("输入不能为空");
+        }
+        return HeJSONResult.ok(userService.queryFriendRequestList(userId));
+    }
+
+
+    /**
+     * 用户处理收到的好友请求
+     * @param sendUserId
+     * @param acceptUerId
+     * @param operType
+     * @return
+     */
+    @PostMapping("/operFriendRequest")
+    public HeJSONResult operFriendRequest(String sendUserId, String acceptUerId, Integer operType) {
+        //0.判断输入不能为空
+        if (StringUtils.isBlank(sendUserId) || StringUtils.isBlank(acceptUerId) || operType == null) {
+            return HeJSONResult.errorMsg("输入不能为空");
+        }
+        //1. 如果传入的操作类型在enum中没有则抛出错误
+        if (StringUtils.isBlank(OperatorFriendRequestTypeEnum.getMsgByType(operType))) {
+            return HeJSONResult.errorMsg("无效的操作类型");
+        }
+
+        //2.如果忽略，则删除好友请求的数据库表记录
+        if (operType == OperatorFriendRequestTypeEnum.IGNORE.type) {
+            userService.deleteFriendRequest(sendUserId, acceptUerId);
+        } else if (operType == OperatorFriendRequestTypeEnum.PASS.type) {
+            //3.先互相添加好友，再删除好友请求的数据库表记录
+            userService.passFriendRequest(sendUserId, acceptUerId);
+        }
+
+        return HeJSONResult.ok();
+    }
+
+
+    /**
+     * 返回用户的好友列表
+     * @param myUserId
+     * @return
+     */
+    @PostMapping("/queryFriends")
+    public HeJSONResult queryFriendList(String myUserId) {
+        //0.判断输入不能为空
+        if (StringUtils.isBlank(myUserId)) {
+            return HeJSONResult.errorMsg("输入不能为空");
+        }
+
+        return HeJSONResult.ok(userService.queryMyFriends(myUserId));
     }
 }
 

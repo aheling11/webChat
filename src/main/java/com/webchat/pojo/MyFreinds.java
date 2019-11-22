@@ -3,6 +3,7 @@ package com.webchat.pojo;
 public class MyFreinds {
     private String id;
     private String my_user_id;
+    private String my_friend_id;
 
     public String getId() {
         return id;
@@ -28,5 +29,4 @@ public class MyFreinds {
         this.my_friend_id = my_friend_id;
     }
 
-    private String my_friend_id;
 }
