@@ -2,7 +2,7 @@ package com.webchat.netty;
 
 import java.io.Serializable;
 
-public class DataContent implements Serializable {
+public class DataContent {
 
     private static final long serialVersionUID = -5439668967366200256L;
     private Integer action;  //消息的类型

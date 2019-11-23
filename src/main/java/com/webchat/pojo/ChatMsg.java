@@ -1,15 +1,38 @@
 package com.webchat.pojo;
 
+import java.util.Date;
+
 public class ChatMsg {
     private String id;
-    private String send_uesr_id;
+    private String send_user_id;
     private String receive_user_id;
     private String msg;
     private int sign_flag;
-    private Long gmtCreate;
-    private Long gmtModified;
+    private Date gmtCreate;
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getSend_user_id() {
+        return send_user_id;
+    }
+
+    public void setSend_user_id(String send_user_id) {
+        this.send_user_id = send_user_id;
+    }
+
+    public String getReceive_user_id() {
+        return receive_user_id;
+    }
+
+    public void setReceive_user_id(String receive_user_id) {
+        this.receive_user_id = receive_user_id;
+    }
 
     public String getMsg() {
         return msg;
@@ -27,43 +50,11 @@ public class ChatMsg {
         this.sign_flag = sign_flag;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getSend_uesr_id() {
-        return send_uesr_id;
-    }
-
-    public void setSend_uesr_id(String send_uesr_id) {
-        this.send_uesr_id = send_uesr_id;
-    }
-
-    public String getReceive_user_id() {
-        return receive_user_id;
-    }
-
-    public void setReceive_user_id(String receive_user_id) {
-        this.receive_user_id = receive_user_id;
-    }
-
-    public Long getGmtCreate() {
+    public Date getGmtCreate() {
         return gmtCreate;
     }
 
-    public void setGmtCreate(Long gmtCreate) {
+    public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
-    }
-
-    public Long getGmtModified() {
-        return gmtModified;
-    }
-
-    public void setGmtModified(Long gmtModified) {
-        this.gmtModified = gmtModified;
     }
 }

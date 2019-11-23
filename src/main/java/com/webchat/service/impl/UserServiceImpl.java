@@ -4,7 +4,7 @@ import com.webchat.enums.SearchFriendsStatusEnum;
 import com.webchat.mapper.FriendsRequestMapper;
 import com.webchat.mapper.MyfriendsMapper;
 import com.webchat.mapper.UserMapperCustom;
-import com.webchat.mapper.userMapper;
+import com.webchat.mapper.UserMapper;
 import com.webchat.pojo.FriendsRequest;
 import com.webchat.pojo.MyFreinds;
 import com.webchat.pojo.User;
@@ -12,18 +12,17 @@ import com.webchat.pojo.vo.FriendRequestVO;
 import com.webchat.pojo.vo.MyFriendsVO;
 import com.webchat.service.UserService;
 import idworker.Sid;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
-@Service
+@Service("userServiceImpl")
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private userMapper userMapper;
+    private UserMapper userMapper;
 
     @Autowired
     private UserMapperCustom userMapperCustom;

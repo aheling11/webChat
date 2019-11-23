@@ -1,6 +1,9 @@
 package com.webchat.netty;
 
-import com.webchat.mapper.userMapper;
+import com.webchat.SpringUtil;
+import com.webchat.enums.MsgActionEnum;
+import com.webchat.service.ChatService;
+import com.webchat.service.UserService;
 import com.webchat.utils.JsonUtils;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -9,8 +12,6 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
-
-import java.time.LocalDateTime;
 
 /**
  * @Description :处理消息的handler
@@ -26,33 +27,61 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
         // 获取来自客户端的消息
         String content = msg.text();
         Channel currentChannel = ctx.channel();
-
+        System.out.println(content);
 
         //1. 判断客户端发来的消息
         DataContent dataContent = JsonUtils.jsonToPojo(content, DataContent.class);
-        System.out.println(dataContent.getAction());
-        System.out.println(dataContent.getChatMsg());
-        System.out.println(dataContent.getExtand());
-//        Integer action = dataContent.getAction();
-//        //2. 判断消息类型，根据不同的类型处理不同的业务
-//
-//        if (action == 1) {
-//            //2.1 当websocket第一次open的时候，初始化channel，把用户的channel和userid关联起来
-//            String senderId = dataContent.getChatMsg().getSenderID();
-//            UserChannelRel.put(senderId, currentChannel);
-//        } else if (action == 2) {
-//            //2.2 聊天类型的消息，将聊天记录保存到数据库，同时标记消息的签收状态[未签收]
-//            ChatMsg chatMsg = dataContent.getChatMsg();
-//            String msgText = chatMsg.getMsg();
-//            String receiverId = chatMsg.getReceiverID();
-//            String senderId = chatMsg.getSenderID();
-//            //保存消息到数据库，并且标记为未签收
-//        } else if (action == 3) {
-//            //2.3 签收消息的类型，针对具体的消息进行签收，修改数据库中对应消息的签收状态[已签收]
-//        } else if (action == 4) {
-//            //2.4 心跳类型的消息
-//
-//        }
+        Integer action = dataContent.getAction();
+        //2. 判断消息类型，根据不同的类型处理不同的业务
+
+        if (action == MsgActionEnum.CONNECT.type ) {
+            //2.1 当websocket第一次open的时候，初始化channel，把用户的channel和userid关联起来
+            String senderId = dataContent.getChatMsg().getSenderId();
+            UserChannelRel.put(senderId, currentChannel);
+            // 测试
+            for (Channel c : users) {
+                System.out.println(c.id().asLongText());
+            }
+            UserChannelRel.output();
+
+        } else if (action == MsgActionEnum.CHAT.type) {
+            //2.2 聊天类型的消息，将聊天记录保存到数据库，同时标记消息的签收状态[未签收]
+            ChatMsg chatMsg = dataContent.getChatMsg();
+            String receiverId = chatMsg.getReceiverId();
+
+            //保存消息到数据库，并且标记为未签收
+            ChatService chatService = (ChatService) SpringUtil.getBean("chatServiceImpl");
+            String msgId = chatService.saveMsg(chatMsg);
+            //保存到数据库后，获取到msgId完善chatMsg后就可以传给接收方了
+            chatMsg.setMsgId(msgId);
+
+            //发送消息
+            Channel receiverChannel = UserChannelRel.get(receiverId);
+            if (receiverChannel == null) {
+                //receiverChannel为空代表用户离线，推送消息（Jpush，个推，小米推送）
+                System.out.println("用户离线");
+
+            } else {
+                //当receiverChannel不为空时，还要去channelGroup里查找这个channel是否存在
+                Channel findChannel = users.find(receiverChannel.id());
+                if (findChannel != null) {
+                    //用户在线
+                    receiverChannel.writeAndFlush(new TextWebSocketFrame(JsonUtils.objectToJson(chatMsg)));
+                } else {
+                    //用户离线 TODO 推送消息
+                    System.out.println("用户离线");
+                }
+            }
+
+
+        } else if (action == 3) {
+            //2.3 签收消息的类型，针对具体的消息进行签收，修改数据库中对应消息的签收状态[已签收] 这里的签收是指客户端自己签收，而不是用户来签收
+            ChatService chatService = (ChatService) SpringUtil.getBean("chatServiceImpl");
+
+        } else if (action == 4) {
+            //2.4 心跳类型的消息
+
+        }
 
     }
     /**

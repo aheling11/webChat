@@ -15,8 +15,12 @@ A web-based instant messaging application
 - 用户查询收到的好友请求 /user/queryFriendRequest
 - 用户处理收到的好友请求 /user/operFriendRequest
 - 返回用户的好友列表 /user/queryFriends
-
+- 聊天模块
+    - 连接到netty服务器
+    - 发送消息
+    - 接受消息
 ## 待完成
 - 聊天模块
+    - 签收消息
 
 

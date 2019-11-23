@@ -2,27 +2,32 @@ package com.webchat.netty;
 
 import java.io.Serializable;
 
-public class ChatMsg implements Serializable {
+public class ChatMsg  {
 
     private static final long serialVersionUID = -4438700049255156017L;
-    private String senderID;
-    private String receiverID;
+    private String senderId;
+    private String receiverId;
     private String msg;    //发送的消息
+    private String msgId; //用于消息的签收
 
-    public String getSenderID() {
-        return senderID;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public void setSenderID(String senderID) {
-        this.senderID = senderID;
+    public String getSenderId() {
+        return senderId;
     }
 
-    public String getReceiverID() {
-        return receiverID;
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
     }
 
-    public void setReceiverID(String receiverID) {
-        this.receiverID = receiverID;
+    public String getReceiverId() {
+        return receiverId;
+    }
+
+    public void setReceiverId(String receiverId) {
+        this.receiverId = receiverId;
     }
 
     public String getMsg() {
@@ -33,14 +38,11 @@ public class ChatMsg implements Serializable {
         this.msg = msg;
     }
 
-    public String getMsgID() {
-        return msgID;
+    public String getMsgId() {
+        return msgId;
     }
 
-    public void setMsgID(String msgID) {
-        this.msgID = msgID;
+    public void setMsgId(String msgId) {
+        this.msgId = msgId;
     }
-
-    private String msgID; //用于消息的签收
-
 }

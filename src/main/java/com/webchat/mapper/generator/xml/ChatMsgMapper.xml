@@ -102,7 +102,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.webchat.mapper.generator.model.ChatMsg">
-    insert into chat_msg (id, send_uesr_id, receive_user_id, 
+    insert into chat_msg (id, send_user_id, receive_user_id,
       msg, sign_flag, gmt_create, 
       gmt_modified)
     values (#{id,jdbcType=VARCHAR}, #{sendUesrId,jdbcType=VARCHAR}, #{receiveUserId,jdbcType=VARCHAR}, 
@@ -196,7 +196,7 @@
   <update id="updateByExample" parameterType="map">
     update chat_msg
     set id = #{record.id,jdbcType=VARCHAR},
-      send_uesr_id = #{record.sendUesrId,jdbcType=VARCHAR},
+      send_user_id = #{record.sendUesrId,jdbcType=VARCHAR},
       receive_user_id = #{record.receiveUserId,jdbcType=VARCHAR},
       msg = #{record.msg,jdbcType=VARCHAR},
       sign_flag = #{record.signFlag,jdbcType=INTEGER},
@@ -232,7 +232,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.webchat.mapper.generator.model.ChatMsg">
     update chat_msg
-    set send_uesr_id = #{sendUesrId,jdbcType=VARCHAR},
+    set send_user_id = #{sendUesrId,jdbcType=VARCHAR},
       receive_user_id = #{receiveUserId,jdbcType=VARCHAR},
       msg = #{msg,jdbcType=VARCHAR},
       sign_flag = #{signFlag,jdbcType=INTEGER},

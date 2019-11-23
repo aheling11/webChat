@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 @Mapper
-public interface userMapper {
+public interface UserMapper {
 
     @Insert("insert into user (id, username, password, nickname, face_image, face_image_big, qrcode, cid) values (#{id}, #{username}, #{password}, #{nickname}, #{face_image}, #{face_image_big}, #{qrcode}, #{cid})")
     void insert(User user);
