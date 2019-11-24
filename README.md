@@ -72,9 +72,9 @@ netty服务器端口：ws://serverUrl:8888/ws
 POST
     参数 | 数据类型 | 说明
     :-: | :-: | :-: |
-     username| String | 用户名
-     password| String | 密码
-     nickname| String | 昵称
+    username| String | 用户名
+    password| String | 密码
+    nickname| String | 昵称
 
 
 返回json格式
@@ -98,8 +98,8 @@ POST
 POST
     参数 | 数据类型 | 说明
    :-: | :-: | :-: |
-     username| String | 用户名
-     password| String | 密码
+    username| String | 用户名
+    password| String | 密码
 
 - /user/search
 
@@ -107,8 +107,8 @@ POST
 
     参数 | 数据类型 | 说明
     :-: | :-: | :-: |
-     myUserId| String | 我的用户Id
-     friendUsername| String | 密码
+    myUserId| String | 我的用户Id
+    friendUsername| String | 密码
 
 
    
@@ -130,7 +130,7 @@ POST
 
 参数 | 数据类型 | 说明
 :-: | :-: | :-: |
- action| Integer | "1"：websocket连接，“2”：发送消息，“3”签收消息
- chatMsg| json对象 | senderId：发送消息的用户的ID，receiverID：接受消息的用户的ID，msg：发送的消息内容，msgID：消息本身的ID
- extand| String | 额外拓展字段，签收消息的IDs放在这里
+action| Integer | "1"：websocket连接，“2”：发送消息，“3”签收消息
+chatMsg| json对象 | senderId：发送消息的用户的ID，receiverID：接受消息的用户的ID，msg：发送的消息内容，msgID：消息本身的ID
+extand| String | 额外拓展字段，签收消息的IDs放在这里
 
