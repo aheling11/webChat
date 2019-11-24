@@ -69,7 +69,9 @@ netty服务器端口：ws://serverUrl:8888/ws
 
 
 - /user/register
-POST
+
+    请求类型：POST
+    
     参数 | 数据类型 | 说明
     :-: | :-: | :-: |
     username| String | 用户名
@@ -95,11 +97,13 @@ POST
 ```
 
 - /user/login
-POST
+
+    请求类型：POST
+
     参数 | 数据类型 | 说明
-   :-: | :-: | :-: |
-    username| String | 用户名
-    password| String | 密码
+     :-: | :-: | :-: |
+    username | String | 用户名
+    password | String | 密码
 
 - /user/search
 
