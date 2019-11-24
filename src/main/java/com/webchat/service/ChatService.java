@@ -2,6 +2,8 @@ package com.webchat.service;
 
 import com.webchat.netty.ChatMsg;
 
+import java.util.List;
+
 public interface ChatService {
 
 
@@ -12,5 +14,12 @@ public interface ChatService {
      * @return
      */
     public String saveMsg(ChatMsg chatMsg);
+
+
+    /**
+     * 批量签收消息
+     * @param msgIdList
+     */
+    public void updateMsgSigned(List<String> msgIdList);
 
 }

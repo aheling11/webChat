@@ -33,8 +33,12 @@ public class ChatServiceImpl implements ChatService {
         chatMsg.setReceive_user_id(msg.getReceiverId());
         chatMsg.setGmtCreate(new Date());
         chatMsg.setSign_flag(MsgSignFlagEnum.unsign.type);
-
         chatMsgMapper.insert(chatMsg);
         return msgId;
+    }
+
+    @Override
+    public void updateMsgSigned(List<String> msgIdList) {
+        chatMsgMapper.batchUpdateMsgSigned(msgIdList);
     }
 }

@@ -52,6 +52,7 @@ public class UserServiceImpl implements UserService {
         user.setId(userId);
         user.setFace_image_big("");
         user.setFace_image("");
+        user.setCid("");
         userMapper.insert(user);
         return user;
     }
