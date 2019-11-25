@@ -129,7 +129,8 @@ netty服务器端口：ws://serverUrl:8888/ws
         "msg":"ddd",
         "msgId":null
     },
-    "extand":null}
+    "extand":null 
+   }
 ```
 
 参数 | 数据类型 | 说明
