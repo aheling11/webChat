@@ -76,6 +76,7 @@ netty服务器端口：ws://serverUrl:8888/ws
 ### 注册:
 - /user/register
 
+<<<<<<< HEAD
 
 请求类型：POST
 
@@ -85,6 +86,15 @@ netty服务器端口：ws://serverUrl:8888/ws
 username| String | 用户名
 password| String | 密码
 nickname| String | 昵称
+=======
+    请求类型：POST
+    
+    参数 | 数据类型 | 说明
+    :-: | :-: | :-: |
+    username| String | 用户名
+    password| String | 密码
+    nickname| String | 昵称
+>>>>>>> b0c52cd6ad7d85ed643f729e82dae6691483c329
 
 
 返回json格式
@@ -108,6 +118,7 @@ nickname| String | 昵称
 
 - /user/login
 
+<<<<<<< HEAD
 请求类型：POST
 
 参数 | 数据类型 | 说明
@@ -147,6 +158,14 @@ password| String | 密码
 
 
 ### 添加好友
+=======
+    请求类型：POST
+
+    参数 | 数据类型 | 说明
+     :-: | :-: | :-: |
+    username | String | 用户名
+    password | String | 密码
+>>>>>>> b0c52cd6ad7d85ed643f729e82dae6691483c329
 
 - /user/search
 
@@ -154,8 +173,8 @@ password| String | 密码
 
     参数 | 数据类型 | 说明
     :-: | :-: | :-: |
-     myUserId| String | 我的用户Id
-     friendUsername| String | 密码
+    myUserId| String | 我的用户Id
+    friendUsername| String | 密码
 
 ### 用户查询收到的好友请求 
 
@@ -206,14 +225,15 @@ operType| Integer | 操作类型，0：忽略该请求，1：同意
         "msg":"ddd",
         "msgId":null
     },
-    "extand":null}
+    "extand":null 
+   }
 ```
 
 参数 | 数据类型 | 说明
 :-: | :-: | :-: |
- action| Integer | "1"：websocket连接，“2”：发送消息，“3”签收消息
- chatMsg| json对象 | senderId：发送消息的用户的ID，receiverID：接受消息的用户的ID，msg：发送的消息内容，msgID：消息本身的ID
- extand| String | 额外拓展字段，签收消息的IDs放在这里
+action| Integer | "1"：websocket连接，“2”：发送消息，“3”签收消息
+chatMsg| json对象 | senderId：发送消息的用户的ID，receiverID：接受消息的用户的ID，msg：发送的消息内容，msgID：消息本身的ID
+extand| String | 额外拓展字段，签收消息的IDs放在这里
 
 说明：
 1. 当前端建立websocket连接时，请发送action=1的请求，后端将绑定userID和这次websocket连接.

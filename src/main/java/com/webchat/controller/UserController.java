@@ -128,14 +128,14 @@ public class UserController {
     /**
      * 用户处理收到的好友请求
      * @param sendUserId
-     * @param acceptUerId
+     * @param acceptUserId
      * @param operType
      * @return
      */
     @PostMapping("/operFriendRequest")
-    public HeJSONResult operFriendRequest(String sendUserId, String acceptUerId, Integer operType) {
+    public HeJSONResult operFriendRequest(String sendUserId, String acceptUserId, Integer operType) {
         //0.判断输入不能为空
-        if (StringUtils.isBlank(sendUserId) || StringUtils.isBlank(acceptUerId) || operType == null) {
+        if (StringUtils.isBlank(sendUserId) || StringUtils.isBlank(acceptUserId) || operType == null) {
             return HeJSONResult.errorMsg("输入不能为空");
         }
         //1. 如果传入的操作类型在enum中没有则抛出错误
@@ -145,10 +145,10 @@ public class UserController {
 
         //2.如果忽略，则删除好友请求的数据库表记录
         if (operType == OperatorFriendRequestTypeEnum.IGNORE.type) {
-            userService.deleteFriendRequest(sendUserId, acceptUerId);
+            userService.deleteFriendRequest(sendUserId, acceptUserId);
         } else if (operType == OperatorFriendRequestTypeEnum.PASS.type) {
             //3.先互相添加好友，再删除好友请求的数据库表记录
-            userService.passFriendRequest(sendUserId, acceptUerId);
+            userService.passFriendRequest(sendUserId, acceptUserId);
         }
 
         return HeJSONResult.ok();
