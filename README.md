@@ -72,11 +72,11 @@ netty服务器端口：ws://serverUrl:8888/ws
 
 
 具体说明：
+
 ---- 
+
 ### 注册:
 - /user/register
-
-<<<<<<< HEAD
 
 请求类型：POST
 
@@ -86,15 +86,16 @@ netty服务器端口：ws://serverUrl:8888/ws
 username| String | 用户名
 password| String | 密码
 nickname| String | 昵称
-=======
-    请求类型：POST
-    
-    参数 | 数据类型 | 说明
-    :-: | :-: | :-: |
-    username| String | 用户名
-    password| String | 密码
-    nickname| String | 昵称
->>>>>>> b0c52cd6ad7d85ed643f729e82dae6691483c329
+
+
+请求类型：POST
+
+参数 | 数据类型 | 说明
+:-: | :-: | :-: |
+username| String | 用户名
+password| String | 密码
+nickname| String | 昵称
+
 
 
 返回json格式
@@ -118,7 +119,6 @@ nickname| String | 昵称
 
 - /user/login
 
-<<<<<<< HEAD
 请求类型：POST
 
 参数 | 数据类型 | 说明
@@ -127,6 +127,7 @@ username| String | 用户名
 password| String | 密码
 
 返回json格式
+
 ```
 
 {
@@ -153,28 +154,27 @@ password| String | 密码
 
     参数 | 数据类型 | 说明
     :-: | :-: | :-: |
-     myUserId| String | 我的用户Id
-     friendUsername| String | 密码
+    myUserId| String | 我的用户Id
+    friendUsername| String | 密码
 
 
 ### 添加好友
-=======
-    请求类型：POST
 
-    参数 | 数据类型 | 说明
-     :-: | :-: | :-: |
-    username | String | 用户名
-    password | String | 密码
->>>>>>> b0c52cd6ad7d85ed643f729e82dae6691483c329
+请求类型：POST
+
+参数 | 数据类型 | 说明
+ :-: | :-: | :-: |
+username | String | 用户名
+password | String | 密码
 
 - /user/search
 
-    请求类型：POST
+请求类型：POST
 
-    参数 | 数据类型 | 说明
-    :-: | :-: | :-: |
-    myUserId| String | 我的用户Id
-    friendUsername| String | 密码
+参数 | 数据类型 | 说明
+:-: | :-: | :-: |
+myUserId| String | 我的用户Id
+friendUsername| String | 密码
 
 ### 用户查询收到的好友请求 
 
@@ -184,7 +184,7 @@ password| String | 密码
 
 参数 | 数据类型 | 说明
 :-: | :-: | :-: |
- userId| String | 我的用户Id
+userId| String | 我的用户Id
 
 
 
@@ -194,7 +194,7 @@ password| String | 密码
 
  参数 | 数据类型 | 说明
 :-: | :-: | :-: |
- sendUserId | String | 发送方用户ID
+sendUserId | String | 发送方用户ID
 acceptUerId| String | 接收方用户ID
 operType| Integer | 操作类型，0：忽略该请求，1：同意
 
@@ -206,7 +206,7 @@ operType| Integer | 操作类型，0：忽略该请求，1：同意
 
 参数 | 数据类型 | 说明
 :-: | :-: | :-: |
- myUserI | String | 我的用户Id
+myUserI | String | 我的用户Id
 
 
 
