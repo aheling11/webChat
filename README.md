@@ -206,7 +206,7 @@ operType| Integer | 操作类型，0：忽略该请求，1：同意
 
 参数 | 数据类型 | 说明
 :-: | :-: | :-: |
-myUserI | String | 我的用户Id
+myUserId | String | 我的用户Id
 
 
 
