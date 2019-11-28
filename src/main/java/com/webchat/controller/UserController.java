@@ -77,8 +77,6 @@ public class UserController {
             UserVO result = new UserVO();
             BeanUtils.copyProperties(user, result);
             return HeJSONResult.ok(result);
-
-
         } else {
             String errorMsg = SearchFriendsStatusEnum.getMsgByKey(status);
             return HeJSONResult.errorMsg(errorMsg);
@@ -169,6 +167,8 @@ public class UserController {
 
         return HeJSONResult.ok(userService.queryMyFriends(myUserId));
     }
+
+
 }
 
 

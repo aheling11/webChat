@@ -1,17 +1,23 @@
 package com.webchat.service.impl;
 
+import com.webchat.enums.MsgActionEnum;
 import com.webchat.enums.SearchFriendsStatusEnum;
 import com.webchat.mapper.FriendsRequestMapper;
 import com.webchat.mapper.MyfriendsMapper;
 import com.webchat.mapper.UserMapperCustom;
 import com.webchat.mapper.UserMapper;
+import com.webchat.netty.DataContent;
+import com.webchat.netty.UserChannelRel;
 import com.webchat.pojo.FriendsRequest;
 import com.webchat.pojo.MyFreinds;
 import com.webchat.pojo.User;
 import com.webchat.pojo.vo.FriendRequestVO;
 import com.webchat.pojo.vo.MyFriendsVO;
 import com.webchat.service.UserService;
+import com.webchat.utils.JsonUtils;
 import idworker.Sid;
+import io.netty.channel.Channel;
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -123,6 +129,16 @@ public class UserServiceImpl implements UserService {
         saveFriends(sendUesrId, acceptUserId);
         saveFriends(acceptUserId, sendUesrId);
         deleteFriendRequest(sendUesrId, acceptUserId);
+
+        Channel sendChannel = UserChannelRel.get(sendUesrId);
+        if (sendChannel!=null) {
+            DataContent dataContent = new DataContent();
+            dataContent.setAction(MsgActionEnum.PULL_FRIEND.type);
+
+            sendChannel.writeAndFlush(new TextWebSocketFrame(
+                    JsonUtils.objectToJson(dataContent)
+            ));
+        }
     }
 
     @Override
