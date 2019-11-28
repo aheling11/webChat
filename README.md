@@ -73,8 +73,6 @@ netty服务器端口：ws://serverUrl:8888/ws
 
 具体说明：
 
-----
-
 ### 注册:
 - /user/register
 
