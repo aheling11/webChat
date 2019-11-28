@@ -193,7 +193,7 @@ userId| String | 我的用户Id
  参数 | 数据类型 | 说明
 :-: | :-: | :-: |
 sendUserId | String | 发送方用户ID
-acceptUerId| String | 接收方用户ID
+acceptUserId| String | 接收方用户ID
 operType| Integer | 操作类型，0：忽略该请求，1：同意
 
 
