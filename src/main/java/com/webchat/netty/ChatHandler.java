@@ -96,7 +96,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 
             System.out.println(msgIdList.toString());
 
-            if (msgIdList != null && !msgIdList.isEmpty() && msgIdList.size() > 0) {
+            if (!msgIdList.isEmpty() && msgIdList.size() > 0) {
                 chatService.updateMsgSigned(msgIdList);
             }
         } else if (action == 4) {

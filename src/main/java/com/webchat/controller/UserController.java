@@ -50,7 +50,6 @@ public class UserController {
             return HeJSONResult.errorMsg("账号或密码错误");
         }
         UserVO userVO = new UserVO();
-        System.out.println(userresult.getNickname());
         BeanUtils.copyProperties(userresult, userVO);
         return HeJSONResult.ok(userVO);
 

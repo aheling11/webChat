@@ -2,7 +2,7 @@ package com.webchat.netty;
 
 import java.io.Serializable;
 
-public class ChatMsg  {
+public class ChatMsg {
 
     private static final long serialVersionUID = -4438700049255156017L;
     private String senderId;

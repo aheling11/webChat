@@ -66,7 +66,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User queryUserForLoin(String username, String pwd) {
         User UserResult = userMapper.findByUsernameAndPwd(username, pwd);
-        System.out.println(UserResult);
         return UserResult;
     }
 
