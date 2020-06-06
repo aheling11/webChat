@@ -1,12 +1,14 @@
 package com.webchat.controller;
 
 
+import com.webchat.annotation.PassToken;
 import com.webchat.enums.OperatorFriendRequestTypeEnum;
 import com.webchat.enums.SearchFriendsStatusEnum;
 import com.webchat.pojo.User;
 import com.webchat.pojo.vo.UserVO;
 import com.webchat.service.UserService;
 import com.webchat.utils.HeJSONResult;
+import com.webchat.utils.JWTUtil;
 import com.webchat.utils.MD5Util;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -20,10 +22,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @PassToken
     @PostMapping("/register")
     public HeJSONResult register(@RequestBody User user) throws Exception {
 
-        if ( user.getUsername() == null || user.getUsername() == "" || user.getPassword() == null || user.getPassword() == "") {
+        if ( user.getUsername() == null || user.getUsername().equals("") || user.getPassword() == null || user.getPassword().equals("")) {
             return HeJSONResult.errorMsg("用户名或密码不能为空");
         }
         boolean usernameIsExist = userService.queryUsernameIsExist(user.getUsername());
@@ -42,6 +45,7 @@ public class UserController {
         return HeJSONResult.ok(uservo);
     }
 
+    @PassToken
     @PostMapping("login")
     public HeJSONResult login(@RequestBody User user) {
 
@@ -49,7 +53,9 @@ public class UserController {
         if (userresult == null) {
             return HeJSONResult.errorMsg("账号或密码错误");
         }
+        String token = JWTUtil.createToken(user.getUsername(), "user", false);
         UserVO userVO = new UserVO();
+        userVO.setToken(token);
         BeanUtils.copyProperties(userresult, userVO);
         return HeJSONResult.ok(userVO);
 

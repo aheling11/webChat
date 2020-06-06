@@ -7,23 +7,20 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * 
+ * @author Heling
+ * @version V1.0
  * @Title: HeJSONResult.java
  * @Package com.webchat.utils
  * @Description: 自定义响应数据结构
- * 				这个类是提供给门户，ios，安卓，微信商城用的
- * 				门户接受此类数据后需要使用本类的方法转换成对于的数据类型格式（类，或者list）
- * 				其他自行处理
- * 				200：表示成功
- * 				500：表示错误，错误信息在msg字段中
- * 				501：bean验证错误，不管多少个错误都以map形式返回
- * 				502：拦截器拦截到用户token出错
- * 				555：异常抛出信息
-
- * 
- * @author Heling
+ * 这个类是提供给门户，ios，安卓，微信商城用的
+ * 门户接受此类数据后需要使用本类的方法转换成对于的数据类型格式（类，或者list）
+ * 其他自行处理
+ * 200：表示成功
+ * 500：表示错误，错误信息在msg字段中
+ * 501：bean验证错误，不管多少个错误都以map形式返回
+ * 502：拦截器拦截到用户token出错
+ * 555：异常抛出信息
  * @date 2019年11月20日00:33:03
- * @version V1.0
  */
 public class HeJSONResult {
 
@@ -38,8 +35,9 @@ public class HeJSONResult {
 
     // 响应中的数据
     private Object data;
+
     @JsonIgnore
-    private String ok;	// 不使用
+    private String ok;    // 不使用
 
     public static HeJSONResult build(Integer status, String msg, Object data) {
         return new HeJSONResult(status, msg, data);
@@ -52,19 +50,19 @@ public class HeJSONResult {
     public static HeJSONResult ok() {
         return new HeJSONResult(null);
     }
-    
+
     public static HeJSONResult errorMsg(String msg) {
         return new HeJSONResult(500, msg, null);
     }
-    
+
     public static HeJSONResult errorMap(Object data) {
         return new HeJSONResult(501, "error", data);
     }
-    
+
     public static HeJSONResult errorTokenMsg(String msg) {
         return new HeJSONResult(502, msg, null);
     }
-    
+
     public static HeJSONResult errorException(String msg) {
         return new HeJSONResult(555, msg, null);
     }
@@ -118,13 +116,11 @@ public class HeJSONResult {
     }
 
     /**
-     * 
-     * @Description: 将json结果集转化为LeeJSONResult对象
-     * 				需要转换的对象是一个类
      * @param jsonData
      * @param clazz
      * @return
-     * 
+     * @Description: 将json结果集转化为LeeJSONResult对象
+     * 需要转换的对象是一个类
      * @author leechenxiang
      * @date 2016年4月22日 下午8:34:58
      */
@@ -150,11 +146,9 @@ public class HeJSONResult {
     }
 
     /**
-     * 
-     * @Description: 没有object对象的转化
      * @param json
      * @return
-     * 
+     * @Description: 没有object对象的转化
      * @author leechenxiang
      * @date 2016年4月22日 下午8:35:21
      */
@@ -168,13 +162,11 @@ public class HeJSONResult {
     }
 
     /**
-     * 
-     * @Description: Object是集合转化
-     * 				需要转换的对象是一个list
      * @param jsonData
      * @param clazz
      * @return
-     * 
+     * @Description: Object是集合转化
+     * 需要转换的对象是一个list
      * @author leechenxiang
      * @date 2016年4月22日 下午8:35:31
      */
@@ -193,12 +185,12 @@ public class HeJSONResult {
         }
     }
 
-	public String getOk() {
-		return ok;
-	}
+    public String getOk() {
+        return ok;
+    }
 
-	public void setOk(String ok) {
-		this.ok = ok;
-	}
+    public void setOk(String ok) {
+        this.ok = ok;
+    }
 
 }

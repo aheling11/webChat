@@ -31,23 +31,22 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
         // 获取来自客户端的消息
         String content = msg.text();
         Channel currentChannel = ctx.channel();
-        System.out.println(content);
 
         //1. 判断客户端发来的消息
         DataContent dataContent = JsonUtils.jsonToPojo(content, DataContent.class);
         Integer action = dataContent.getAction();
         //2. 判断消息类型，根据不同的类型处理不同的业务
 
-        if (action == MsgActionEnum.CONNECT.type ) {
+        if (action == MsgActionEnum.CONNECT.type) {
             //2.1 当websocket第一次open的时候，初始化channel，把用户的channel和userid关联起来
             String senderId = dataContent.getChatMsg().getSenderId();
             UserChannelRel.put(senderId, currentChannel);
 
             // 测试
-            for (Channel c : users) {
-                System.out.println("uesrsGroup中的 channel ID " +c.id().asLongText());
-            }
-            UserChannelRel.output();
+//            for (Channel c : users) {
+//                System.out.println("uesrsGroup中的 channel ID " + c.id().asLongText());
+//            }
+//            UserChannelRel.output();
 
         } else if (action == MsgActionEnum.CHAT.type) {
 
@@ -94,23 +93,24 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
                 }
             }
 
-            System.out.println(msgIdList.toString());
-
             if (!msgIdList.isEmpty() && msgIdList.size() > 0) {
                 chatService.updateMsgSigned(msgIdList);
             }
         } else if (action == 4) {
             //2.4 心跳类型的消息
 
+        } else if (action == 5){
+
         }
 
     }
+
     /**
+     * @param ctx
+     * @throws Exception
      * @Description :
      * 当客户端连接服务器后
      * 获取客户端的channel并且放入ChannelGroup中进行管理
-     * @param ctx
-     * @throws Exception
      */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {

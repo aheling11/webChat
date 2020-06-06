@@ -1,7 +1,12 @@
 package com.webchat.netty;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
+@Setter
+@Getter
 public class DataContent {
 
     private static final long serialVersionUID = -5439668967366200256L;
@@ -13,23 +18,4 @@ public class DataContent {
         return action;
     }
 
-    public void setAction(Integer action) {
-        this.action = action;
-    }
-
-    public ChatMsg getChatMsg() {
-        return chatMsg;
-    }
-
-    public void setChatMsg(ChatMsg chatMsg) {
-        this.chatMsg = chatMsg;
-    }
-
-    public String getExtand() {
-        return extand;
-    }
-
-    public void setExtand(String extand) {
-        this.extand = extand;
-    }
 }
