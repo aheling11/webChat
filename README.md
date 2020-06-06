@@ -21,9 +21,7 @@ A web-based instant messaging application
     - 接受消息
     - 签收消息
 
-## 待完成
-- 聊天模块
-    - 推送离线消息
+
 ---
 ## 接口说明
 
